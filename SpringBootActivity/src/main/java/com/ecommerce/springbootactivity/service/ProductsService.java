@@ -24,7 +24,7 @@ public class ProductsService {
         return productsRepository.findAll();
     }
 
-    public static final String imageDir = "G:\\My Drive\\SpringBootActivity\\target\\classes\\static";
+    public static final String imageDir = "C:\\MDI-training\\SpringBootActivity\\SpringBootActivity\\target\\classes\\static";
 
     public String img(MultipartFile file, String imgName) throws IOException {
        String imgOrigLoc;
@@ -58,10 +58,10 @@ public class ProductsService {
         return productsRepository.save(productsDto);
     }
 
-//    public Products getUserProduct(int user_id){
-//        Products products = productsRepository.findByUserId(user_id);
-//        return products;
-//    }
+    public List<Products> getUserProduct(int user_id){
+        List<Products> products = productsRepository.findAllByUserId(user_id);
+        return products;
+    }
 
     public Products getProductById(int id) {
         Optional<Products> optionalProducts = productsRepository.findById(id);
