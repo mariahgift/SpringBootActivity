@@ -22,19 +22,13 @@ public class ProductsController {
 
     @GetMapping("/products/{user_id}")
     public String showProductsForm(@PathVariable int user_id, ProductsDto productsDto, Model model) {
-//      try {
-//          productsDto.setUserId(user_id);
-//          model.addAttribute("product", productsDto);
-//          return "users/products/products";
-//      }catch (Exception e){
-//          return "redirect:/web/login";
-//      }
-
-
-            productsDto.setUserId(user_id);
-            model.addAttribute("product", productsDto);
-            return "users/products/products";
-
+      try {
+          productsDto.setUserId(user_id);
+          model.addAttribute("product", productsDto);
+          return "users/products/products";
+      }catch (Exception e){
+          return "redirect:/web/login";
+      }
 
     }
     // Add Product
