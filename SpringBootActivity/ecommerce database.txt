@@ -1,0 +1,65 @@
+--ecommerce database
+
+CREATE DATABASE ecommerce;
+
+--users table
+
+CREATE TABLE roles (
+	role_id SERIAL PRIMARY KEY NOT NULL,
+	rolename VARCHAR(255)	
+);
+
+INSERT INTO roles(rolename) values('ROLE_BUYER'), ('ROLE_SELLER');
+
+CREATE TABLE users (
+	user_id SERIAL PRIMARY KEY NOT NULL,
+	firstname VARCHAR(255),
+	lastname VARCHAR(255),
+	email VARCHAR(255),
+	password VARCHAR(255),
+		role_id int,
+	
+		constraint fk_users
+		FOREIGN KEY(role_id)
+		REFERENCES roles(role_id)
+
+);
+
+--roles table
+
+
+
+
+--products table
+
+CREATE TABLE products (
+	product_id SERIAL PRIMARY KEY NOT NULL,
+	productname VARCHAR(255),
+	productdescription VARCHAR(255),
+	productquantity int,
+	productprice double precision,
+	productimage VARCHAR(255),
+	user_id int,
+	
+		constraint fk_users
+		FOREIGN KEY(user_id)
+		REFERENCES users(user_id)
+);
+
+
+--carts table
+
+CREATE TABLE carts (
+	cart_id SERIAL PRIMARY KEY NOT NULL,
+	product_id int, 
+	quantity double precision,
+	user_id int,
+	
+		constraint fk_products
+		FOREIGN KEY(product_id)
+		REFERENCES products(product_id),
+
+		constraint fk_users
+		FOREIGN KEY(user_id)
+		REFERENCES users(user_id)
+);
