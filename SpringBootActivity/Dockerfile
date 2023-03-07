@@ -6,6 +6,6 @@
 
 FROM openjdk:19
 ADD target/spring-boot-activity-docker.jar spring-boot-activity-docker.jar
-EXPOSE 3000
+EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "spring-boot-activity-docker.jar"]
 
