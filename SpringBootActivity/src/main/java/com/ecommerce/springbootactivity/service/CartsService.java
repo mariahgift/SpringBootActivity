@@ -52,7 +52,6 @@ public class CartsService {
     }
 
     public List<Object[]> findAll(int user_id) {
-
         return cartsRepository.productsInCart(user_id);
     }
 

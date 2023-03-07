@@ -26,27 +26,27 @@ public class CartsController {
     @GetMapping("/cartlist")
     public String showCartList(@CurrentSecurityContext(expression="authentication?.name")
                                    String email, Model model) {
-//        try {
-//            model.addAttribute("carts",
-//                    cartsService.findAll(usersService.findUserByEmail(email).getUserId()));
-//
-//            return "users/carts/carts";
-//
-//        }catch (Exception e){
-//            return "redirect:/web/login";
-//        }
-
+        try {
             model.addAttribute("carts",
                     cartsService.findAll(usersService.findUserByEmail(email).getUserId()));
 
             return "users/carts/carts";
+
+        }catch (Exception e){
+            return "redirect:/web/login";
+        }
+
+//            model.addAttribute("carts",
+//                    cartsService.findAll(usersService.findUserByEmail(email).getUserId()));
+
+//            return "users/carts/carts";
 
     }
 
     @PostMapping("/add-cart/{product_id}")
     public String addToCart(@PathVariable int product_id,
                             @CurrentSecurityContext(expression="authentication?.name")
-    String email){
+                            String email){
 
         cartsService.addCart(usersService.findUserByEmail(email).getUserId(),product_id);
         return "redirect:/web/home";

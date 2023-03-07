@@ -25,7 +25,6 @@ public class ProductsService {
     }
 
     public static final String imageDir = "C:\\MDI-training\\SpringBootActivity\\SpringBootActivity\\target\\classes\\static";
-
     public String img(MultipartFile file, String imgName) throws IOException {
        String imgOrigLoc;
 
